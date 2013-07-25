@@ -6,7 +6,7 @@
 				%li.media
 					%a.pull-left{:href => "user_url(post.user)"}
 						= image_tag "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash3/c163.36.546.546/s160x160/14986_10151378874079699_689397579_n.jpg", :class => "media-object img-rounded pagination-centered", :width => "60"
-						%p.pagination-centered Shaan
+						%p.pagination-centered= ENV["AS3_BUCKET_NAME"]
 		.media-body
 			.span8
 				%h4.media-heading
@@ -14,3 +14,5 @@
 					%small= post.updated_at.strftime("%m/%d/%y at %I:%M%P")
 				%p= post.snippet
 			.span2
+				- if post.attachment? 
+					= image_tag post.image_url(:thumb), height: "1000", width:"100%"

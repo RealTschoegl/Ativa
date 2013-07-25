@@ -16,3 +16,7 @@
 
 vendor/bundle
 .DS_store
+public/uploads
+
+# Ignore application configuration
+/config/application.yml

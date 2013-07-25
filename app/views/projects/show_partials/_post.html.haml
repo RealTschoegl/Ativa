@@ -6,10 +6,14 @@
 				= @post.title
 				%small= @post.updated_at.strftime("%m/%d/%y at %I:%M%P")
 				%small= link_to 'edit', project_partial_url(@project.id, params[:phase], 'edit_post', post_id: @post.id)
-			%p
+
 	.span1
 .row_fluid
 	.span1
 	.span11
 		%p= @post.message
-		= image_tag @post.attachment, height: "1000", width:"100%"
+		- if @post.attachment_url == /^https:\/\/ativa-attachments-2.s3-us-west-2.amazonaws.com\/uploads.+http/
+			= image_tag @post.attachment_url(:medium), height: "1000", width:"100%"
+		- else
+			- pic_url = /http.+/.match(@post.attachment_url.gsub("https://ativa-attachments-2.s3.amazonaws.com", "")).to_s.gsub("%3A",":")
+			= image_tag pic_url, width:"100%"

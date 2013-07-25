@@ -2,13 +2,13 @@
   .span2
   .span8
     .row-fluid
-      = form_for @post do |f|
+      = form_for @post, :html => {multipart: true} do |f|
         .field
           = f.text_field :title, placeholder: "Title"
         .field
           = f.text_area :message, rows: 4, style: 'width: 100%;', placeholder: "Type your message..."
         .field
-          = f.text_field :attachment, style: 'width: 60%;', placeholder: "Paste a URL for your attachment"
+          = f.file_field :attachment, style: 'width: 60%;', placeholder: "Paste a URL for your attachment"
 
           = f.hidden_field :project_id, value: @project.id
           = f.hidden_field :phase_id, value: params[:phase]

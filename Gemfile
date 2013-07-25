@@ -27,6 +27,10 @@ gem 'haml-rails'
 gem 'therubyracer', :platforms => :ruby
 gem 'twitter-bootstrap-rails'
 gem 'less-rails'
+gem 'carrierwave'
+gem 'rmagick'
+gem 'figaro'
+gem 'fog'
 
 
 # To use ActiveModel has_secure_password

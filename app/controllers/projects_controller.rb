@@ -17,6 +17,7 @@ class ProjectsController < ApplicationController
     @phases = Phase.all
 
     @show_partial = params[:show_partial]
+
     
     if @show_partial == 'posts'
       @posts = @project.posts.where(phase_id: Phase.find_by_name(params[:phase]).id).order
